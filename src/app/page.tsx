@@ -6,6 +6,7 @@ import { ChevronRight } from 'lucide-react';
 import { FadeIn } from '@/components/ui/FadeIn';
 import { Button } from '@/components/ui/Button';
 import { SpotlightCard } from '@/components/ui/SpotlightCard';
+import { HeroGeometricBackground } from '@/components/ui/shape-landing-hero';
 import { HeroDashboard } from '@/components/visuals/HeroDashboard';
 import { BenchmarkGraph } from '@/components/visuals/BenchmarkGraph';
 import { ArchitectureVisual } from '@/components/visuals/ArchitectureVisual';
@@ -15,6 +16,8 @@ import { Testimonials } from '@/components/sections/Testimonials';
 import { FAQ } from '@/components/sections/FAQ';
 import { Zap, BarChart2, Shield, Check } from 'lucide-react';
 import { motion } from 'framer-motion';
+import InferenceRoutingVisual from '@/components/ui/inference-routing-visual';
+
 
 export default function HomePage() {
   const router = useRouter();
@@ -32,48 +35,7 @@ export default function HomePage() {
       </div>
 
       {/* Hero Section */}
-      <section className="relative px-6 mb-32 md:mb-48">
-        <div className="max-w-7xl mx-auto text-center">
-          <FadeIn>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 mb-8 cursor-pointer hover:bg-blue-500/20 transition-colors">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-              </span>
-              <span className="text-xs font-semibold text-blue-400 tracking-wide uppercase">Mirai Engine 2.0</span>
-            </div>
-          </FadeIn>
-
-          <FadeIn delay={0.1}>
-            <h1 className="text-5xl md:text-8xl font-bold tracking-tight text-white mb-8 leading-[0.95]">
-              Deploy models to <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-white/40">the intelligent edge.</span>
-            </h1>
-          </FadeIn>
-
-          <FadeIn delay={0.2}>
-            <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
-              A unified inference layer for modern applications. <br className="hidden md:block" />
-              Route traffic between on-device NPUs and cloud GPUs instantly.
-            </p>
-          </FadeIn>
-
-          <FadeIn delay={0.3} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button onClick={() => navigate('contact')} className="h-12 px-8 text-base">
-              Start Building <ChevronRight size={16} />
-            </Button>
-            <Button variant="outline" onClick={() => navigate('docs')} className="h-12 px-8 text-base font-mono">
-              npx mirai-init@latest
-            </Button>
-          </FadeIn>
-
-          {/* Hero Visual/Dashboard */}
-          <FadeIn delay={0.4} className="mt-20 relative z-10">
-            <HeroDashboard />
-          </FadeIn>
-        </div>
-      </section>
-
+      <HeroDashboard />
       {/* Social Proof */}
       <section className="py-12 border-y border-white/5 bg-white/[0.01] overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 relative">
@@ -204,6 +166,32 @@ export default function HomePage() {
 
       {/* Integration Code */}
       <IntegrationSection />
+
+      {/* Card 5: Inference Routing */}
+      <div className="md:col-span-3 rounded-3xl p-10 flex flex-col items-center">
+        <div className="mb-4 text-center">
+          <h3 className="text-2xl font-bold text-white mb-2">Unified Inference Layer</h3>
+          <p className="text-gray-400 max-w-lg mx-auto">
+            Route inference requests across NPUs, GPUs, and cloud endpoints with a single API call. Automatic failover keeps your app running.
+          </p>
+        </div>
+        <InferenceRoutingVisual
+          className="mt-4"
+          badgeTexts={{
+            first: "NPU",
+            second: "GPU",
+            third: "Cloud",
+            fourth: "Fallback"
+          }}
+          buttonTexts={{
+            first: "llama-3-8b",
+            second: "whisper-v3"
+          }}
+          title="Intelligent inference routing across compute targets"
+          circleText="SDK"
+          lightColor="#3B82F6"
+        />
+      </div>
 
       {/* Testimonials */}
       <Testimonials />

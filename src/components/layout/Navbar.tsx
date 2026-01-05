@@ -40,7 +40,7 @@ export const Navbar = () => {
                     ))}
                 </div>
                 <div className="flex items-center gap-4">
-                    <Link href="/contact" className="text-sm font-medium text-gray-400 hover:text-white transition-colors hidden md:block">
+                    <Link href="/signin" className="text-sm font-medium text-gray-400 hover:text-white transition-colors hidden md:block">
                         Sign In
                     </Link>
                     <Link href="/contact">

@@ -21,10 +21,10 @@ export const Footer = () => (
                 </div>
             </div>
             {[
-                { title: 'Product', links: [{ l: 'Model Library', p: '/models' }, { l: 'Inference Engine', p: '/' }, { l: 'Enterprise', p: '/enterprise' }] },
-                { title: 'Developers', links: [{ l: 'Documentation', p: '/docs' }, { l: 'API Reference', p: '/docs' }, { l: 'Status', p: '/' }] },
-                { title: 'Company', links: [{ l: 'About', p: '/' }, { l: 'Blog', p: '/' }, { l: 'Careers', p: '/' }] },
-                { title: 'Legal', links: [{ l: 'Privacy', p: '/' }, { l: 'Terms', p: '/' }] }
+                { title: 'Product', links: [{ l: 'Model Library', p: '/models' }, { l: 'Enterprise', p: '/enterprise' }] },
+                { title: 'Developers', links: [{ l: 'Documentation', p: '/docs' }, { l: 'API Reference', p: '/api-reference' }] },
+                { title: 'Company', links: [{ l: 'About', p: '/about' }, { l: 'Blog', p: '/blog' }, { l: 'Careers', p: '/careers' }] },
+                { title: 'Legal', links: [{ l: 'Privacy', p: '/privacy' }, { l: 'Terms', p: '/terms' }] }
             ].map((col, i) => (
                 <div key={i}>
                     <h4 className="text-white font-bold mb-6">{col.title}</h4>
