@@ -8,8 +8,7 @@ import Image from 'next/image';
 export default function AboutPage() {
   return (
     <div className="min-h-screen bg-[#020202] pt-32 pb-20">
-      <HeroGeometricBackground className="fixed inset-0 z-0" />
-      
+      <HeroGeometricBackground className="z-0" />
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-20">
@@ -35,11 +34,14 @@ export default function AboutPage() {
             </div>
           </FadeIn>
           <FadeIn delay={0.3}>
-            <div className="relative h-[400px] rounded-2xl overflow-hidden border border-white/10 bg-white/5">
-               {/* Placeholder for team/office image */}
-               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center">
-                  <span className="text-white/20 font-mono text-xl">Mission Visual</span>
-               </div>
+            <div className="relative h-[400px] rounded-2xl overflow-hidden border border-white/10 bg-white/5 group">
+              <div className="absolute inset-0 bg-blue-500/10 group-hover:bg-transparent transition-colors duration-500 z-10" />
+              <Image
+                src="/images/mission-visual.png"
+                alt="Mirai Mission"
+                fill
+                className="object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+              />
             </div>
           </FadeIn>
         </div>
@@ -49,13 +51,18 @@ export default function AboutPage() {
             <h2 className="text-3xl font-bold text-white mb-12 text-center">The Team</h2>
             <div className="grid md:grid-cols-3 gap-8">
               {[
-                { name: "Alex Chen", role: "CEO & Co-founder", bio: "Ex-Google Brain. Led the TensorFlow Lite team." },
-                { name: "Sarah Miller", role: "CTO & Co-founder", bio: "PhD from Stanford. Specialized in sparse model optimization." },
-                { name: "David Park", role: "Head of Product", bio: "Previously built developer tools at Vercel and Stripe." }
+                { name: "Alex Chen", role: "CEO & Co-founder", bio: "Ex-Google Brain. Led the TensorFlow Lite team.", image: "/images/team-alex.png" },
+                { name: "Sarah Miller", role: "CTO & Co-founder", bio: "PhD from Stanford. Specialized in sparse model optimization.", image: "/images/team-sarah.png" },
+                { name: "David Park", role: "Head of Product", bio: "Previously built developer tools at Vercel and Stripe.", image: "/images/team-david.png" }
               ].map((member, i) => (
-                <div key={i} className="p-6 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 transition-colors">
-                  <div className="w-20 h-20 rounded-full bg-gray-800 mb-4 mx-auto overflow-hidden relative">
-                     <div className="absolute inset-0 bg-gradient-to-tr from-gray-700 to-gray-600" />
+                <div key={i} className="p-6 rounded-xl bg-white/5 border border-white/10 hover:border-white/20 transition-colors group">
+                  <div className="w-24 h-24 rounded-full mb-6 mx-auto overflow-hidden relative border-2 border-white/10 group-hover:border-blue-400/50 transition-colors">
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                   <h3 className="text-xl font-bold text-white text-center mb-1">{member.name}</h3>
                   <p className="text-blue-400 text-sm text-center mb-4 font-mono">{member.role}</p>
@@ -67,16 +74,16 @@ export default function AboutPage() {
         </FadeIn>
 
         <FadeIn delay={0.5}>
-           <div className="text-center border-t border-white/10 pt-20">
-              <h2 className="text-3xl font-bold text-white mb-6">Backed by the best</h2>
-              <div className="flex flex-wrap justify-center gap-12 opacity-50 grayscale">
-                 {/* Placeholder logos */}
-                 <div className="text-2xl font-bold text-white">SEQUOIA</div>
-                 <div className="text-2xl font-bold text-white">ANDREESSEN HOROWITZ</div>
-                 <div className="text-2xl font-bold text-white">Y COMBINATOR</div>
-                 <div className="text-2xl font-bold text-white">INDEX VENTURES</div>
-              </div>
-           </div>
+          <div className="text-center border-t border-white/10 pt-20">
+            <h2 className="text-3xl font-bold text-white mb-6">Backed by the best</h2>
+            <div className="flex flex-wrap justify-center gap-12 opacity-50 grayscale">
+              {/* Placeholder logos */}
+              <div className="text-2xl font-bold text-white">SEQUOIA</div>
+              <div className="text-2xl font-bold text-white">ANDREESSEN HOROWITZ</div>
+              <div className="text-2xl font-bold text-white">Y COMBINATOR</div>
+              <div className="text-2xl font-bold text-white">INDEX VENTURES</div>
+            </div>
+          </div>
         </FadeIn>
       </div>
     </div>

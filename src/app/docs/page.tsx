@@ -15,7 +15,7 @@ export default function DocsPage() {
     const docContent: Record<string, React.ReactNode> = {
         "Introduction": (
             <>
-                <h1 className="text-4xl font-bold text-white mb-6">Introduction to Mirai</h1>
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-6">Introduction to Mirai</h1>
                 <p className="text-gray-400 text-lg leading-relaxed mb-8">
                     Mirai is the unified inference layer for the intelligent edge. It enables developers to deploy and run state-of-the-art open source models directly on user devices with a single API, handling hardware acceleration (NPU/GPU), quantization, and model caching automatically.
                 </p>
@@ -42,7 +42,7 @@ export default function DocsPage() {
         ),
         "Installation": (
             <>
-                <h1 className="text-4xl font-bold text-white mb-6">Installation</h1>
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-6">Installation</h1>
                 <p className="text-gray-400 mb-6">Install the Mirai SDK via your preferred package manager. We support Node.js, Python, and Rust.</p>
 
                 <div className="flex gap-4 mb-4 border-b border-white/10">
@@ -68,7 +68,7 @@ export default function DocsPage() {
         ),
         "Quickstart": (
             <>
-                <h1 className="text-4xl font-bold text-white mb-6">Quickstart</h1>
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-6">Quickstart</h1>
                 <p className="text-gray-400 mb-8">Initialize the client and start streaming tokens immediately. This example shows how to set up a basic chat completion loop.</p>
 
                 <h3 className="text-lg font-bold text-white mb-3">1. Initialize Client</h3>
@@ -86,7 +86,7 @@ export default function DocsPage() {
         ),
         "Architecture": (
             <>
-                <h1 className="text-4xl font-bold text-white mb-6">Architecture</h1>
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-6">Architecture</h1>
                 <p className="text-gray-400 mb-8">
                     Mirai acts as an intelligent router between your application code and the underlying execution hardware. It abstracts away the complexity of
                     selecting the right backend (CoreML, Vulkan, CUDA) and managing memory.
@@ -112,7 +112,7 @@ export default function DocsPage() {
         ),
         "Inference Engine": (
             <>
-                <h1 className="text-4xl font-bold text-white mb-6">Inference Engine</h1>
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-6">Inference Engine</h1>
                 <p className="text-gray-400 mb-6">Our engine uses a custom JIT compiler to optimize transformer weights for the specific mobile chipset detected at runtime.</p>
                 <div className="grid grid-cols-2 gap-4 mb-8">
                     <div className="bg-white/5 p-4 rounded-xl border border-white/10">
@@ -135,7 +135,7 @@ export default function DocsPage() {
         ),
         "Model Caching": (
             <>
-                <h1 className="text-4xl font-bold text-white mb-6">Model Caching</h1>
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-6">Model Caching</h1>
                 <p className="text-gray-400 mb-6">Models are downloaded once and cached in the device&apos;s persistent storage. Subsequent loads are instant (typically &lt;100ms).</p>
                 <div className="bg-yellow-500/10 border border-yellow-500/20 p-4 rounded-xl text-yellow-200 text-sm mb-6 flex gap-3">
                     <AlertTriangle size={18} className="shrink-0" />
@@ -150,7 +150,7 @@ export default function DocsPage() {
         ),
         "Privacy": (
             <>
-                <h1 className="text-4xl font-bold text-white mb-6">Privacy & Security</h1>
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-6">Privacy & Security</h1>
                 <p className="text-gray-400 mb-8">
                     Mirai is designed for &quot;Local-First&quot; privacy. By default, inference happens entirely within the OS sandbox.
                     No data leaves the device unless you explicitly enable Cloud Fallback.
@@ -172,7 +172,7 @@ export default function DocsPage() {
         ),
         "Cloud Fallback": (
             <>
-                <h1 className="text-4xl font-bold text-white mb-6">Cloud Fallback</h1>
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-6">Cloud Fallback</h1>
                 <p className="text-gray-400 mb-6">Configure rules to route complex queries to the cloud while keeping simple tasks local.</p>
                 <DocCodeBlock lang="javascript" code={`const client = new Mirai({\n  fallback: {\n    trigger: 'latency_threshold_exceeded',\n    threshold: 500, // ms\n    provider: 'openai'\n  }\n});`} />
 
@@ -186,7 +186,7 @@ export default function DocsPage() {
         ),
         "Client": (
             <>
-                <h1 className="text-4xl font-bold text-white mb-6">Client API</h1>
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-6">Client API</h1>
                 <p className="text-gray-400 mb-4">The main entry point for the SDK.</p>
                 <h3 className="text-xl font-bold text-white mt-8 mb-4">Constructor</h3>
                 <p className="text-sm font-mono bg-white/5 inline-block px-2 py-1 rounded text-blue-300 mb-4">new Mirai(config: MiraiConfig)</p>
@@ -212,7 +212,7 @@ export default function DocsPage() {
         ),
         "Chat": (
             <>
-                <h1 className="text-4xl font-bold text-white mb-6">Chat Completions</h1>
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-6">Chat Completions</h1>
                 <p className="text-gray-400 mb-4">Generate text responses using LLMs.</p>
                 <h3 className="text-xl font-bold text-white mt-8 mb-4">create()</h3>
                 <p className="text-gray-400 mb-4">Returns a stream or promise resolving to the model output.</p>
@@ -231,7 +231,7 @@ export default function DocsPage() {
         ),
         "Audio": (
             <>
-                <h1 className="text-4xl font-bold text-white mb-6">Audio API</h1>
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-6">Audio API</h1>
                 <p className="text-gray-400 mb-6">Speech-to-text and Text-to-speech capabilities via Whisper.</p>
                 <DocCodeBlock lang="javascript" code={`// Transcribe audio file\nconst text = await client.audio.transcribe({\n  file: audioBuffer,\n  model: 'whisper-tiny',\n  language: 'en'\n});`} />
                 <DocNote>
@@ -241,7 +241,7 @@ export default function DocsPage() {
         ),
         "Image": (
             <>
-                <h1 className="text-4xl font-bold text-white mb-6">Image Generation</h1>
+                <h1 className="text-3xl md:text-4xl font-bold text-white mb-6">Image Generation</h1>
                 <p className="text-gray-400 mb-6">Generate images locally using Stable Diffusion CoreML optimization.</p>
                 <DocCodeBlock lang="javascript" code={`const image = await client.images.generate({\n  prompt: "A cyberpunk city at night",\n  steps: 20\n});`} />
             </>
@@ -255,9 +255,9 @@ export default function DocsPage() {
     ];
 
     return (
-        <div className="pt-32 pb-20 px-6 min-h-screen max-w-7xl mx-auto flex flex-col md:flex-row gap-12">
+        <div className="pt-24 md:pt-32 pb-20 px-4 md:px-6 min-h-screen max-w-7xl mx-auto flex flex-col md:flex-row gap-8 md:gap-12">
             {/* Sidebar */}
-            <div className="w-full md:w-64 flex-shrink-0 space-y-8 h-fit sticky top-32">
+            <div className="w-full md:w-64 flex-shrink-0 space-y-8 h-fit md:sticky md:top-32 bg-[#020202]/80 md:bg-transparent backdrop-blur-md md:backdrop-blur-none p-4 md:p-0 rounded-xl md:rounded-none border border-white/10 md:border-none">
                 {navItems.map((group, i) => (
                     <div key={i}>
                         <h4 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-4">{group.section}</h4>

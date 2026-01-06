@@ -23,13 +23,13 @@ interface InferenceRoutingVisualProps {
 }
 
 // Animated light component that travels along the path
-const AnimatedLight = ({ 
-  pathId, 
-  delay = 0, 
-  color = "#3B82F6" 
-}: { 
-  pathId: string; 
-  delay?: number; 
+const AnimatedLight = ({
+  pathId,
+  delay = 0,
+  color = "#3B82F6"
+}: {
+  pathId: string;
+  delay?: number;
   color?: string;
 }) => {
   const controls = useAnimationControls();
@@ -39,7 +39,7 @@ const AnimatedLight = ({
     const startAnimation = async () => {
       await new Promise(resolve => setTimeout(resolve, delay * 1000));
       setIsVisible(true);
-      
+
       // Continuous loop
       while (true) {
         await controls.start({
@@ -50,7 +50,7 @@ const AnimatedLight = ({
         await new Promise(resolve => setTimeout(resolve, 500));
       }
     };
-    
+
     startAnimation();
   }, [controls, delay]);
 
@@ -110,52 +110,60 @@ const InferenceRoutingVisual = ({
   return (
     <div
       className={cn(
-        "relative flex w-full max-w-[900px] flex-col items-center",
+        "relative flex w-full max-w-[800px] flex-col items-center mx-auto p-4 md:p-0",
         className
       )}
     >
-      {/* Top Buttons Row */}
-      <div className="flex w-full justify-center gap-16 sm:gap-24 mb-0 flex-wrap relative z-10">
-        <motion.div 
-          className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-gradient-to-b from-[#1a1a2e] to-[#16161a] border border-blue-500/30 text-white text-xs sm:text-sm shadow-[0_0_15px_rgba(59,130,246,0.15)] hover:shadow-[0_0_20px_rgba(59,130,246,0.25)] transition-shadow duration-300"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0, duration: 0.4 }}
-        >
-          <ChipIcon className="text-blue-400" />
-          <span>{badgeTexts?.first || "NPU"}</span>
-        </motion.div>
-        <motion.div 
-          className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-gradient-to-b from-[#1a1a2e] to-[#16161a] border border-purple-500/30 text-white text-xs sm:text-sm shadow-[0_0_15px_rgba(139,92,246,0.15)] hover:shadow-[0_0_20px_rgba(139,92,246,0.25)] transition-shadow duration-300"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1, duration: 0.4 }}
-        >
-          <ChipIcon className="text-purple-400" />
-          <span>{badgeTexts?.second || "GPU"}</span>
-        </motion.div>
-        <motion.div 
-          className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-gradient-to-b from-[#1a1a2e] to-[#16161a] border border-green-500/30 text-white text-xs sm:text-sm shadow-[0_0_15px_rgba(34,197,94,0.15)] hover:shadow-[0_0_20px_rgba(34,197,94,0.25)] transition-shadow duration-300"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.4 }}
-        >
-          <CloudIconSmall className="text-green-400" />
-          <span>{badgeTexts?.third || "Cloud"}</span>
-        </motion.div>
-        <motion.div 
-          className="flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-gradient-to-b from-[#1a1a2e] to-[#16161a] border border-orange-500/30 text-white text-xs sm:text-sm shadow-[0_0_15px_rgba(249,115,22,0.15)] hover:shadow-[0_0_20px_rgba(249,115,22,0.25)] transition-shadow duration-300"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.4 }}
-        >
-          <ZapIconSmall className="text-orange-400" />
-          <span>{badgeTexts?.fourth || "Fallback"}</span>
-        </motion.div>
+      {/* Top Buttons Row - Grid for perfect alignment with SVG paths (12.5%, 37.5%, etc) */}
+      <div className="grid grid-cols-4 w-full mb-[-10px] relative z-20">
+        <div className="flex justify-center">
+          <motion.div
+            className="flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-b from-[#1a1a2e] to-[#16161a] border border-blue-500/30 text-white text-[10px] sm:text-sm shadow-[0_0_15px_rgba(59,130,246,0.15)] hover:shadow-[0_0_20px_rgba(59,130,246,0.25)] transition-shadow duration-300 whitespace-nowrap"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0, duration: 0.4 }}
+          >
+            <ChipIcon className="block text-blue-400 w-3 h-3 sm:w-4 sm:h-4" />
+            <span>{badgeTexts?.first || "NPU"}</span>
+          </motion.div>
+        </div>
+        <div className="flex justify-center">
+          <motion.div
+            className="flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-b from-[#1a1a2e] to-[#16161a] border border-purple-500/30 text-white text-[10px] sm:text-sm shadow-[0_0_15px_rgba(139,92,246,0.15)] hover:shadow-[0_0_20px_rgba(139,92,246,0.25)] transition-shadow duration-300 whitespace-nowrap"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.4 }}
+          >
+            <ChipIcon className="block text-purple-400 w-3 h-3 sm:w-4 sm:h-4" />
+            <span>{badgeTexts?.second || "GPU"}</span>
+          </motion.div>
+        </div>
+        <div className="flex justify-center">
+          <motion.div
+            className="flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-b from-[#1a1a2e] to-[#16161a] border border-green-500/30 text-white text-[10px] sm:text-sm shadow-[0_0_15px_rgba(34,197,94,0.15)] hover:shadow-[0_0_20px_rgba(34,197,94,0.25)] transition-shadow duration-300 whitespace-nowrap"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.4 }}
+          >
+            <CloudIconSmall className="block text-green-400 w-3 h-3 sm:w-4 sm:h-4" />
+            <span>{badgeTexts?.third || "Cloud"}</span>
+          </motion.div>
+        </div>
+        <div className="flex justify-center">
+          <motion.div
+            className="flex items-center gap-1 sm:gap-2 px-2 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-b from-[#1a1a2e] to-[#16161a] border border-orange-500/30 text-white text-[10px] sm:text-sm shadow-[0_0_15px_rgba(249,115,22,0.15)] hover:shadow-[0_0_20px_rgba(249,115,22,0.25)] transition-shadow duration-300 whitespace-nowrap"
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.4 }}
+          >
+            <ZapIconSmall className="block text-orange-400 w-3 h-3 sm:w-4 sm:h-4" />
+            <span>{badgeTexts?.fourth || "Fallback"}</span>
+          </motion.div>
+        </div>
       </div>
 
-      {/* Unified SVG Stage */}
-      <div className="relative w-full h-[420px]">
+      {/* Unified SVG Stage - Responsive Aspect Ratio */}
+      <div className="relative w-full aspect-[800/420]">
         <svg
           className="w-full h-full absolute top-0 left-0 pointer-events-none"
           viewBox="0 0 800 420"
@@ -170,7 +178,7 @@ const InferenceRoutingVisual = ({
               <animate attributeName="y1" values="-100%;100%" dur="1.8s" repeatCount="indefinite" />
               <animate attributeName="y2" values="0%;200%" dur="1.8s" repeatCount="indefinite" />
             </linearGradient>
-            
+
             <linearGradient id="flowGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
               <stop offset="0%" stopColor="rgba(139,92,246,0)" />
               <stop offset="50%" stopColor="rgba(139,92,246,0.9)" />
@@ -178,7 +186,7 @@ const InferenceRoutingVisual = ({
               <animate attributeName="y1" values="-100%;100%" dur="1.8s" begin="0.2s" repeatCount="indefinite" />
               <animate attributeName="y2" values="0%;200%" dur="1.8s" begin="0.2s" repeatCount="indefinite" />
             </linearGradient>
-            
+
             <linearGradient id="flowGradient3" x1="0%" y1="0%" x2="0%" y2="100%">
               <stop offset="0%" stopColor="rgba(34,197,94,0)" />
               <stop offset="50%" stopColor="rgba(34,197,94,0.9)" />
@@ -186,7 +194,7 @@ const InferenceRoutingVisual = ({
               <animate attributeName="y1" values="-100%;100%" dur="1.8s" begin="0.4s" repeatCount="indefinite" />
               <animate attributeName="y2" values="0%;200%" dur="1.8s" begin="0.4s" repeatCount="indefinite" />
             </linearGradient>
-            
+
             <linearGradient id="flowGradient4" x1="0%" y1="0%" x2="0%" y2="100%">
               <stop offset="0%" stopColor="rgba(249,115,22,0)" />
               <stop offset="50%" stopColor="rgba(249,115,22,0.9)" />
@@ -205,21 +213,21 @@ const InferenceRoutingVisual = ({
               <stop offset="50%" stopColor="rgba(59,130,246,0.3)" />
               <stop offset="100%" stopColor="rgba(59,130,246,0.1)" />
             </linearGradient>
-            
+
             <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+              <feGaussianBlur stdDeviation="3" result="coloredBlur" />
               <feMerge>
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="SourceGraphic"/>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
 
             <filter id="dotGlow" x="-100%" y="-100%" width="300%" height="300%">
-              <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+              <feGaussianBlur stdDeviation="4" result="coloredBlur" />
               <feMerge>
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="coloredBlur"/>
-                <feMergeNode in="SourceGraphic"/>
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="coloredBlur" />
+                <feMergeNode in="SourceGraphic" />
               </feMerge>
             </filter>
           </defs>
@@ -269,7 +277,7 @@ const InferenceRoutingVisual = ({
               {/* Router to Models */}
               <motion.circle r="3" fill="#22C55E" filter="url(#dotGlow)" initial={{ offsetDistance: "0%" }} animate={{ offsetDistance: "100%" }} transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1, ease: "easeInOut" }} style={{ offsetPath: `path("${bottomPaths.routerToLlama}")` }} />
               <motion.circle r="3" fill="#8B5CF6" filter="url(#dotGlow)" initial={{ offsetDistance: "0%" }} animate={{ offsetDistance: "100%" }} transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1, ease: "easeInOut", delay: 0.5 }} style={{ offsetPath: `path("${bottomPaths.routerToWhisper}")` }} />
-              
+
               {/* Models to SDK */}
               <motion.circle r="3" fill="#22C55E" filter="url(#dotGlow)" initial={{ offsetDistance: "0%" }} animate={{ offsetDistance: "100%" }} transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1, ease: "easeInOut", delay: 0.75 }} style={{ offsetPath: `path("${bottomPaths.llamaToSdk}")` }} />
               <motion.circle r="3" fill="#8B5CF6" filter="url(#dotGlow)" initial={{ offsetDistance: "0%" }} animate={{ offsetDistance: "100%" }} transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1, ease: "easeInOut", delay: 1.25 }} style={{ offsetPath: `path("${bottomPaths.whisperToSdk}")` }} />
@@ -283,56 +291,59 @@ const InferenceRoutingVisual = ({
         </svg>
 
         {/* Router Badge - Centered */}
-        <motion.div 
-          className="absolute top-[160px] left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center rounded-lg border border-white/10 bg-[#101112] px-4 py-2 z-20 shadow-[0_0_20px_rgba(59,130,246,0.15)]"
+        <motion.div
+          className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center rounded-lg border border-white/10 bg-[#101112] px-2 sm:px-4 py-1 sm:py-2 z-20 shadow-[0_0_20px_rgba(59,130,246,0.15)]"
+          style={{ top: '38%' }}
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.5, duration: 0.5 }}
         >
-          <SparklesIcon className="size-3 text-blue-400" />
-          <span className="ml-2 text-xs text-gray-300 whitespace-nowrap">
-            {title || "Intelligent inference routing across compute targets"}
+          <SparklesIcon className="size-2 sm:size-3 text-blue-400" />
+          <span className="ml-1 sm:ml-2 text-[10px] sm:text-xs text-gray-300 whitespace-nowrap">
+            {title || "Intelligent inference routing"}
           </span>
         </motion.div>
 
         {/* Model Badges */}
-        <motion.div 
-          className="absolute top-[280px] left-[200px] -translate-x-1/2 -translate-y-1/2 z-20 h-8 rounded-full bg-gradient-to-b from-[#1a1a2e] to-[#16161a] px-4 text-sm border border-green-500/20 flex items-center gap-2 text-gray-300 shadow-[0_0_20px_rgba(34,197,94,0.1)]"
+        <motion.div
+          className="absolute -translate-x-1/2 -translate-y-1/2 z-20 h-6 sm:h-8 rounded-full bg-gradient-to-b from-[#1a1a2e] to-[#16161a] px-2 sm:px-4 text-[10px] sm:text-sm border border-green-500/20 flex items-center gap-1 sm:gap-2 text-gray-300 shadow-[0_0_20px_rgba(34,197,94,0.1)] whitespace-nowrap"
+          style={{ top: '66.6%', left: '25%' }}
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 0.8, duration: 0.5 }}
         >
-          <Cpu className="size-4 text-green-400" />
+          <Cpu className="size-3 sm:size-4 text-green-400" />
           <span>{buttonTexts?.first || "llama-3-8b"}</span>
         </motion.div>
-        
-        <motion.div 
-          className="absolute top-[280px] left-[600px] -translate-x-1/2 -translate-y-1/2 z-20 h-8 rounded-full bg-gradient-to-b from-[#1a1a2e] to-[#16161a] px-4 text-sm border border-purple-500/20 flex items-center gap-2 text-gray-300 shadow-[0_0_20px_rgba(139,92,246,0.1)]"
+
+        <motion.div
+          className="absolute -translate-x-1/2 -translate-y-1/2 z-20 h-6 sm:h-8 rounded-full bg-gradient-to-b from-[#1a1a2e] to-[#16161a] px-2 sm:px-4 text-[10px] sm:text-sm border border-purple-500/20 flex items-center gap-1 sm:gap-2 text-gray-300 shadow-[0_0_20px_rgba(139,92,246,0.1)] whitespace-nowrap"
+          style={{ top: '66.6%', left: '75%' }}
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ delay: 1, duration: 0.5 }}
         >
-          <Cloud className="size-4 text-purple-400" />
+          <Cloud className="size-3 sm:size-4 text-purple-400" />
           <span>{buttonTexts?.second || "whisper-v3"}</span>
         </motion.div>
 
         {/* SDK Core */}
-        <div className="absolute top-[380px] left-1/2 -translate-x-1/2 -translate-y-1/2 z-30">
+        <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 z-30" style={{ top: '90.5%' }}>
           {/* Concentric Rings */}
           <motion.div
-            className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 h-[120px] w-[120px] rounded-full border border-blue-500/20"
+            className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 h-[60px] w-[60px] sm:h-[120px] sm:w-[120px] rounded-full border border-blue-500/20"
             animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3], rotate: 360 }}
             transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
           />
           <motion.div
-            className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 h-[180px] w-[180px] rounded-full border border-blue-500/10"
+            className="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 h-[90px] w-[90px] sm:h-[180px] sm:w-[180px] rounded-full border border-blue-500/10"
             animate={{ scale: [1, 1.05, 1], opacity: [0.2, 0.4, 0.2], rotate: -180 }}
             transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
           />
-          
+
           {/* Core */}
-          <motion.div 
-            className="grid h-[65px] w-[65px] place-items-center rounded-full bg-gradient-to-b from-[#1e1e30] to-[#0f0f15] font-semibold text-sm text-blue-400 shadow-[0_0_30px_rgba(59,130,246,0.4),inset_0_1px_0_rgba(255,255,255,0.1)] border border-blue-500/40"
+          <motion.div
+            className="grid h-[40px] w-[40px] sm:h-[65px] sm:w-[65px] place-items-center rounded-full bg-gradient-to-b from-[#1e1e30] to-[#0f0f15] font-semibold text-[10px] sm:text-sm text-blue-400 shadow-[0_0_30px_rgba(59,130,246,0.4),inset_0_1px_0_rgba(255,255,255,0.1)] border border-blue-500/40"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 1.2, duration: 0.5, type: "spring" }}

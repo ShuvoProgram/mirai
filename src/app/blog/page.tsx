@@ -44,8 +44,8 @@ const blogPosts = [
 export default function BlogPage() {
   return (
     <div className="min-h-screen bg-[#020202] pt-32 pb-20">
-      <HeroGeometricBackground className="fixed inset-0 z-0" />
-      
+      <HeroGeometricBackground className="z-0" />
+
       <div className="relative z-10 max-w-5xl mx-auto px-6">
         <FadeIn>
           <div className="mb-20">
@@ -78,9 +78,9 @@ export default function BlogPage() {
                     </div>
                   </div>
                   <div className="mt-4 md:mt-0">
-                     <Link href={`/blog/${post.slug}`} className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white group-hover:bg-blue-500 group-hover:scale-110 transition-all">
-                        <ArrowRight size={18} />
-                     </Link>
+                    <Link href={`/blog`} className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-white/10 text-white group-hover:bg-blue-500 group-hover:scale-110 transition-all">
+                      <ArrowRight size={18} />
+                    </Link>
                   </div>
                 </div>
               </article>

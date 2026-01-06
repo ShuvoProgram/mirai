@@ -26,6 +26,25 @@ export default function ApiReferencePage() {
 
   return (
     <div className="min-h-screen bg-[#020202] pt-24 flex">
+      {/* Mobile Navigation */}
+      <div className="lg:hidden fixed left-0 right-0 top-16 z-30 bg-[#020202]/90 backdrop-blur-md border-b border-white/5 overflow-x-auto no-scrollbar">
+        <div className="flex items-center gap-2 p-4 min-w-max">
+          {sections.map((section) => (
+            <button
+              key={section.id}
+              onClick={() => scrollToSection(section.id)}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium transition-colors border ${activeSection === section.id
+                ? 'bg-blue-500/10 text-blue-400 border-blue-500/20'
+                : 'text-gray-400 border-transparent hover:text-white hover:bg-white/5'
+                }`}
+            >
+              <section.icon size={14} />
+              {section.title}
+            </button>
+          ))}
+        </div>
+      </div>
+
       {/* Sidebar Navigation */}
       <div className="hidden lg:block w-64 fixed left-0 top-24 bottom-0 border-r border-white/5 bg-[#020202] overflow-y-auto z-20">
         <div className="p-6">
@@ -35,11 +54,10 @@ export default function ApiReferencePage() {
               <button
                 key={section.id}
                 onClick={() => scrollToSection(section.id)}
-                className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
-                  activeSection === section.id 
-                    ? 'bg-blue-500/10 text-blue-400' 
-                    : 'text-gray-400 hover:text-white hover:bg-white/5'
-                }`}
+                className={`w-full flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${activeSection === section.id
+                  ? 'bg-blue-500/10 text-blue-400'
+                  : 'text-gray-400 hover:text-white hover:bg-white/5'
+                  }`}
               >
                 <section.icon size={16} />
                 {section.title}
@@ -50,9 +68,9 @@ export default function ApiReferencePage() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 lg:pl-64">
-        <div className="max-w-5xl mx-auto px-6 py-12">
-          
+      <div className="flex-1 lg:pl-64 pt-12 lg:pt-0">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-8 lg:py-12">
+
           {/* Introduction */}
           <section id="intro" className="mb-24 scroll-mt-32">
             <FadeIn>
@@ -60,29 +78,29 @@ export default function ApiReferencePage() {
                 <div className="p-2 rounded-lg bg-blue-500/10 text-blue-400">
                   <Terminal size={24} />
                 </div>
-                <h1 className="text-4xl font-bold text-white">API Reference</h1>
+                <h1 className="text-3xl lg:text-4xl font-bold text-white">API Reference</h1>
               </div>
-              <p className="text-xl text-gray-400 leading-relaxed mb-8 max-w-3xl">
-                The Mirai API is designed to be a drop-in replacement for OpenAI's API. 
+              <p className="text-lg lg:text-xl text-gray-400 leading-relaxed mb-8 max-w-3xl">
+                The Mirai API is designed to be a drop-in replacement for OpenAI's API.
                 You can use standard client libraries by simply changing the <code className="text-blue-400 bg-blue-500/10 px-1.5 py-0.5 rounded text-sm">baseURL</code>.
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
-                <div>
+                <div className="min-w-0">
                   <h3 className="text-white font-semibold mb-4 flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-green-500" />
                     Base URL
                   </h3>
-                  <div className="bg-[#0A0A0A] border border-white/10 rounded-lg p-4 font-mono text-sm text-gray-300">
+                  <div className="bg-[#0A0A0A] border border-white/10 rounded-lg p-4 font-mono text-sm text-gray-300 overflow-x-auto">
                     https://api.mirai.com/v1
                   </div>
                 </div>
-                <div>
+                <div className="min-w-0">
                   <h3 className="text-white font-semibold mb-4 flex items-center gap-2">
                     <div className="w-2 h-2 rounded-full bg-purple-500" />
                     Local URL
                   </h3>
-                  <div className="bg-[#0A0A0A] border border-white/10 rounded-lg p-4 font-mono text-sm text-gray-300">
+                  <div className="bg-[#0A0A0A] border border-white/10 rounded-lg p-4 font-mono text-sm text-gray-300 overflow-x-auto">
                     http://localhost:3000/v1
                   </div>
                 </div>
@@ -91,8 +109,8 @@ export default function ApiReferencePage() {
           </section>
 
           {/* Authentication */}
-          <section id="auth" className="mb-24 scroll-mt-32 border-t border-white/5 pt-16">
-            <div className="grid xl:grid-cols-2 gap-12">
+          <section id="auth" className="mb-24 scroll-mt-32 border-t border-white/5 pt-12 lg:pt-16">
+            <div className="grid xl:grid-cols-2 gap-8 lg:gap-12">
               <div>
                 <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
                   <Lock className="text-gray-500" size={24} />
@@ -104,7 +122,7 @@ export default function ApiReferencePage() {
                 <p className="text-gray-400 mb-6">
                   Authentication to the API is performed via HTTP Bearer Auth. Provide your API key as the Bearer token in the Authorization header.
                 </p>
-                
+
                 <div className="bg-yellow-500/10 border border-yellow-500/20 rounded-lg p-4 mb-6">
                   <p className="text-yellow-200 text-sm">
                     <strong>Warning:</strong> Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, and so forth.
@@ -113,10 +131,10 @@ export default function ApiReferencePage() {
               </div>
               <div>
                 <div className="sticky top-32">
-                  <DocCodeBlock 
-                    lang="bash" 
+                  <DocCodeBlock
+                    lang="bash"
                     code={`curl https://api.mirai.com/v1/models \\
-  -H "Authorization: Bearer $MIRAI_API_KEY"`} 
+  -H "Authorization: Bearer $MIRAI_API_KEY"`}
                   />
                 </div>
               </div>
@@ -124,9 +142,9 @@ export default function ApiReferencePage() {
           </section>
 
           {/* Chat Completions */}
-          <section id="chat" className="mb-24 scroll-mt-32 border-t border-white/5 pt-16">
-            <div className="grid xl:grid-cols-2 gap-12">
-              <div>
+          <section id="chat" className="mb-24 scroll-mt-32 border-t border-white/5 pt-12 lg:pt-16">
+            <div className="grid xl:grid-cols-2 gap-8 lg:gap-12">
+              <div className="min-w-0">
                 <div className="flex items-center gap-3 mb-6">
                   <span className="px-2 py-1 rounded bg-green-500/10 text-green-400 text-xs font-mono font-bold border border-green-500/20">POST</span>
                   <h2 className="text-2xl font-bold text-white">Create chat completion</h2>
@@ -144,7 +162,7 @@ export default function ApiReferencePage() {
                     { name: 'stream', type: 'boolean', req: false, desc: 'If set, partial message deltas will be sent, like in ChatGPT. Tokens will be sent as data-only server-sent events.' },
                   ].map((param) => (
                     <div key={param.name} className="border-b border-white/5 pb-6 last:border-0">
-                      <div className="flex items-baseline gap-3 mb-2">
+                      <div className="flex items-baseline gap-3 mb-2 flex-wrap">
                         <span className="font-mono text-blue-400 font-bold">{param.name}</span>
                         <span className="text-xs text-gray-500 font-mono">{param.type}</span>
                         {param.req && <span className="text-xs text-red-400 font-mono">Required</span>}
@@ -155,10 +173,10 @@ export default function ApiReferencePage() {
                 </div>
               </div>
 
-              <div>
+              <div className="min-w-0">
                 <div className="sticky top-32 space-y-6">
-                  <DocCodeBlock 
-                    lang="bash" 
+                  <DocCodeBlock
+                    lang="bash"
                     code={`curl https://api.mirai.com/v1/chat/completions \\
   -H "Content-Type: application/json" \\
   -H "Authorization: Bearer $MIRAI_API_KEY" \\
@@ -174,16 +192,16 @@ export default function ApiReferencePage() {
         "content": "Hello!"
       }
     ]
-  }'`} 
+  }'`}
                   />
-                  
+
                   <div className="bg-[#0A0A0A] border border-white/10 rounded-xl overflow-hidden">
                     <div className="px-4 py-2 border-b border-white/5 bg-white/5 text-xs font-mono text-gray-500">
                       Response
                     </div>
                     <div className="p-4 overflow-x-auto">
                       <pre className="font-mono text-sm text-green-400/80 leading-relaxed">
-{`{
+                        {`{
   "id": "chatcmpl-123",
   "object": "chat.completion",
   "created": 1677652288,
@@ -211,9 +229,9 @@ export default function ApiReferencePage() {
           </section>
 
           {/* List Models */}
-          <section id="models" className="mb-24 scroll-mt-32 border-t border-white/5 pt-16">
-            <div className="grid xl:grid-cols-2 gap-12">
-              <div>
+          <section id="models" className="mb-24 scroll-mt-32 border-t border-white/5 pt-12 lg:pt-16">
+            <div className="grid xl:grid-cols-2 gap-8 lg:gap-12">
+              <div className="min-w-0">
                 <div className="flex items-center gap-3 mb-6">
                   <span className="px-2 py-1 rounded bg-blue-500/10 text-blue-400 text-xs font-mono font-bold border border-blue-500/20">GET</span>
                   <h2 className="text-2xl font-bold text-white">List models</h2>
@@ -223,21 +241,21 @@ export default function ApiReferencePage() {
                 </p>
               </div>
 
-              <div>
+              <div className="min-w-0">
                 <div className="sticky top-32 space-y-6">
-                  <DocCodeBlock 
-                    lang="bash" 
+                  <DocCodeBlock
+                    lang="bash"
                     code={`curl https://api.mirai.com/v1/models \\
-  -H "Authorization: Bearer $MIRAI_API_KEY"`} 
+  -H "Authorization: Bearer $MIRAI_API_KEY"`}
                   />
-                  
+
                   <div className="bg-[#0A0A0A] border border-white/10 rounded-xl overflow-hidden">
                     <div className="px-4 py-2 border-b border-white/5 bg-white/5 text-xs font-mono text-gray-500">
                       Response
                     </div>
                     <div className="p-4 overflow-x-auto">
                       <pre className="font-mono text-sm text-green-400/80 leading-relaxed">
-{`{
+                        {`{
   "object": "list",
   "data": [
     {

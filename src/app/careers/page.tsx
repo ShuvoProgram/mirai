@@ -40,8 +40,8 @@ const jobs = [
 export default function CareersPage() {
   return (
     <div className="min-h-screen bg-[#020202] pt-32 pb-20">
-      <HeroGeometricBackground className="fixed inset-0 z-0" />
-      
+      <HeroGeometricBackground className="z-0" />
+
       <div className="relative z-10 max-w-7xl mx-auto px-6">
         <FadeIn>
           <div className="text-center mb-20">
@@ -55,18 +55,18 @@ export default function CareersPage() {
         </FadeIn>
 
         <div className="grid md:grid-cols-3 gap-8 mb-20">
-           {[
-             { title: "Deep Work", desc: "We prioritize long blocks of uninterrupted time. No unnecessary meetings." },
-             { title: "Open Source", desc: "We build in public. Our core runtime is open source and we contribute back to the community." },
-             { title: "Global Team", desc: "We hire the best talent regardless of location. We are a remote-first company." }
-           ].map((value, i) => (
-             <FadeIn key={i} delay={0.2 + (i * 0.1)}>
-               <div className="p-6 rounded-xl bg-white/5 border border-white/10">
-                 <h3 className="text-xl font-bold text-white mb-3">{value.title}</h3>
-                 <p className="text-gray-400">{value.desc}</p>
-               </div>
-             </FadeIn>
-           ))}
+          {[
+            { title: "Deep Work", desc: "We prioritize long blocks of uninterrupted time. No unnecessary meetings." },
+            { title: "Open Source", desc: "We build in public. Our core runtime is open source and we contribute back to the community." },
+            { title: "Global Team", desc: "We hire the best talent regardless of location. We are a remote-first company." }
+          ].map((value, i) => (
+            <FadeIn key={i} delay={0.2 + (i * 0.1)}>
+              <div className="p-6 rounded-xl bg-white/5 border border-white/10">
+                <h3 className="text-xl font-bold text-white mb-3">{value.title}</h3>
+                <p className="text-gray-400">{value.desc}</p>
+              </div>
+            </FadeIn>
+          ))}
         </div>
 
         <FadeIn delay={0.5}>

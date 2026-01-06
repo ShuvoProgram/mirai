@@ -2,11 +2,8 @@
 
 import React from 'react';
 import { useRouter } from 'next/navigation';
-import { ChevronRight } from 'lucide-react';
-import { FadeIn } from '@/components/ui/FadeIn';
 import { Button } from '@/components/ui/Button';
 import { SpotlightCard } from '@/components/ui/SpotlightCard';
-import { HeroGeometricBackground } from '@/components/ui/shape-landing-hero';
 import { HeroDashboard } from '@/components/visuals/HeroDashboard';
 import { BenchmarkGraph } from '@/components/visuals/BenchmarkGraph';
 import { ArchitectureVisual } from '@/components/visuals/ArchitectureVisual';

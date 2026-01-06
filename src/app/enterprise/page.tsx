@@ -12,28 +12,28 @@ export default function EnterprisePage() {
     const navigate = (path: string) => router.push(path);
 
     return (
-        <div className="pt-32 pb-20 px-6 min-h-screen">
+        <div className="pt-24 md:pt-32 pb-20 px-4 md:px-6 min-h-screen">
             {/* Hero */}
-            <div className="max-w-7xl mx-auto text-center mb-24 relative">
+            <div className="max-w-7xl mx-auto text-center mb-16 md:mb-24 relative">
                 {/* Background Effects */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-blue-900/20 blur-[100px] rounded-full pointer-events-none" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vw] sm:w-[600px] md:w-[800px] h-[300px] md:h-[400px] bg-blue-900/20 blur-[60px] md:blur-[100px] rounded-full pointer-events-none" />
 
                 <FadeIn>
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 mb-8">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 mb-6 md:mb-8">
                         <Shield size={14} className="text-blue-400" />
                         <span className="text-xs font-semibold text-blue-400 tracking-wide uppercase">Enterprise Ready</span>
                     </div>
-                    <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 tracking-tight">
+                    <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white mb-6 md:mb-8 tracking-tight">
                         Intelligence at <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-b from-blue-400 to-blue-600">Global Scale.</span>
                     </h1>
-                    <p className="text-xl text-gray-400 max-w-3xl mx-auto mb-10 leading-relaxed">
+                    <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto mb-8 md:mb-10 leading-relaxed px-2 md:px-0">
                         The infrastructure to deploy, manage, and secure on-device AI across millions of endpoints.
                         SOC2 Type II compliant.
                     </p>
-                    <div className="flex justify-center gap-4">
-                        <Button className="h-12 px-8" onClick={() => navigate('contact')}>Talk to Sales</Button>
-                        <Button variant="outline" className="h-12 px-8">View Compliance</Button>
+                    <div className="flex flex-col sm:flex-row justify-center gap-4 w-full sm:w-auto px-4 sm:px-0">
+                        <Button className="h-11 md:h-12 w-full sm:w-auto px-8" onClick={() => navigate('contact')}>Talk to Sales</Button>
+                        <Button variant="outline" className="h-11 md:h-12 w-full sm:w-auto px-8">View Compliance</Button>
                     </div>
                 </FadeIn>
             </div>
@@ -73,19 +73,19 @@ export default function EnterprisePage() {
             </div>
 
             {/* Comparison Table */}
-            <div className="max-w-5xl mx-auto mb-32">
-                <h2 className="text-3xl font-bold text-white mb-12 text-center">Plan Comparison</h2>
-                <div className="overflow-x-auto">
-                    <table className="w-full text-left border-collapse">
+            <div className="max-w-5xl mx-auto mb-32 px-4 md:px-0">
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-8 md:mb-12 text-center">Plan Comparison</h2>
+                <div className="overflow-x-auto border border-white/10 rounded-xl bg-white/[0.02]">
+                    <table className="w-full min-w-[640px] text-left border-collapse">
                         <thead>
-                            <tr className="border-b border-white/10">
-                                <th className="py-4 pl-4 text-sm font-medium text-gray-500 uppercase tracking-wider">Feature</th>
-                                <th className="py-4 px-8 text-sm font-bold text-white">Starter</th>
-                                <th className="py-4 px-8 text-sm font-bold text-white">Pro</th>
-                                <th className="py-4 px-8 text-sm font-bold text-blue-400">Enterprise</th>
+                            <tr className="border-b border-white/10 bg-white/[0.02]">
+                                <th className="py-4 pl-6 text-xs md:text-sm font-medium text-gray-500 uppercase tracking-wider whitespace-nowrap">Feature</th>
+                                <th className="py-4 px-4 md:px-8 text-xs md:text-sm font-bold text-white whitespace-nowrap">Starter</th>
+                                <th className="py-4 px-4 md:px-8 text-xs md:text-sm font-bold text-white whitespace-nowrap">Pro</th>
+                                <th className="py-4 px-4 md:px-8 text-xs md:text-sm font-bold text-blue-400 whitespace-nowrap bg-blue-500/5">Enterprise</th>
                             </tr>
                         </thead>
-                        <tbody className="text-gray-300 text-sm">
+                        <tbody className="text-gray-300 text-xs md:text-sm">
                             {[
                                 { name: "Monthly Active Devices", start: "10k", pro: "100k", ent: "Unlimited" },
                                 { name: "Model Hosting", start: "Public Only", pro: "Public Only", ent: "Custom/Private" },
@@ -95,11 +95,11 @@ export default function EnterprisePage() {
                                 { name: "SLA", start: "Standard", pro: "99.9%", ent: "99.99%" },
                                 { name: "Support", start: "Community", pro: "Email", ent: "Dedicated Slack" },
                             ].map((row, i) => (
-                                <tr key={i} className="border-b border-white/5 hover:bg-white/[0.02] transition-colors">
-                                    <td className="py-4 pl-4 font-medium text-white">{row.name}</td>
-                                    <td className="py-4 px-8 text-gray-500">{row.start}</td>
-                                    <td className="py-4 px-8 text-gray-400">{row.pro}</td>
-                                    <td className="py-4 px-8 text-white font-bold">{row.ent}</td>
+                                <tr key={i} className="border-b border-white/5 hover:bg-white/[0.02] transition-colors last:border-0">
+                                    <td className="py-4 pl-6 font-medium text-white whitespace-nowrap">{row.name}</td>
+                                    <td className="py-4 px-4 md:px-8 text-gray-500 whitespace-nowrap">{row.start}</td>
+                                    <td className="py-4 px-4 md:px-8 text-gray-400 whitespace-nowrap">{row.pro}</td>
+                                    <td className="py-4 px-4 md:px-8 text-white font-bold whitespace-nowrap bg-blue-500/5">{row.ent}</td>
                                 </tr>
                             ))}
                         </tbody>
